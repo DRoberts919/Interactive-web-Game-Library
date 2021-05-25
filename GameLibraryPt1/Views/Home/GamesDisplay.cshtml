@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Game>
+
+@{
+}
+
+@*<h1 class="text-white text-center">Games Available @Model.Count()</h1>*@
+<br />
+<br />
+
+<div class="row">
+    <div class="col-lg-12"></div>
+    <div class="col-lg-12   ">
+        <form asp-controller="Home" asp-action="SearchGames" method="post">
+            <div class="col d-flex flex-row">
+                <div class="dropdown show  ">
+                    
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filter
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                        <div class="input-group mb-0">
+                            <input type="text" class="form-control" placeholder="Genre" aria-label="Recipient's username" aria-describedby="basic-addon2" name="Genre">
+                        </div>
+                        <div class="input-group mb-0">
+                            <input type="text" class="form-control" placeholder="ESRB Rating" aria-label="Recipient's username" aria-describedby="basic-addon2" name="esrbRating">
+                        </div>
+                        <div class="input-group mb-0">
+                            <input type="text" class="form-control" placeholder="Platfrom" aria-label="Recipient's username" aria-describedby="basic-addon2" name="platform">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                     <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2" name="title">
+                     <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                            <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="GamesDisplay">All Games</a>
+                     </div>
+                </div>
+                
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mainRow">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-12 col-md-4 col-lg-3 ml-2 mr-2">
+            <partial name="_GameCardPartialView" for="@item" />
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col-10"><a asp-controller="Home" asp-action="AddGameRoute">Add Game</a></div>
+    <div class="col-10"></div>
+</div>
+
+<!-- Modal -->

@@ -1,0 +1,19 @@
+﻿1. Modify IdentityHostingStartup.cs
+	1a. Change AddDefaultIdentity to
+	1b. services.AddIdentity<IdentityUser, IdentityRole>(..)
+		.AddRoles<IdentityRole>()
+		.AddDefaultTokenProviders()
+		.AddDefaultUI()
+		.AddEntityFrameworkStores...
+2. Create Admin area to manage Roles (could also just add directly to db)
+	2a. private readonly RoleManager<IdentityRole> roleManager;
+	2b. RoleManager is used to manage roles (create, update...)
+	2c. Create Role
+		2ca. Create a new role newRole = new IdentityRole { Name = "Admin"};
+		2cb. IdentityResult result = await roleManager.CreateAsync(newRole);
+	2d. Show current roles
+		2da. this.Roles = this.roleManager.Roles.ToList();
+3. Add Users to Roles
+	3a. Use UserManager and RoleManager to get roles/users
+	3b. Assign uers to role using
+		3ba.  IdentityResult result = await UserManager.AddToRoleAsync(user, SelectedRole);

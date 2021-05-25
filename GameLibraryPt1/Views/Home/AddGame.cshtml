@@ -1,0 +1,31 @@
+﻿@model Game
+@{
+}
+<h1>Add Game page</h1>
+
+<div>
+    <form asp-controller="Home" asp-action="AddGame" method="post">
+        <div class="input-group mb-3">
+            <input asp-for="@Model.Title"  class="form-control" value="" placeholder="Title" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="@Model.Platform"  class="form-control" value="" placeholder="Platform" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="@Model.Rating" class="form-control" value="" placeholder="Rating" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="@Model.Genre"  class="form-control" value="" placeholder="" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="@Model.Year"  class="form-control" value="" placeholder="Year" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="@Model.Image"  class="form-control" value="" placeholder="Image String" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input hidden asp-for="UserId" class="form-control" value="@ViewBag.userId">
+        </div>
+        <button type="submit">Add Game</button>
+    </form>
+</div>

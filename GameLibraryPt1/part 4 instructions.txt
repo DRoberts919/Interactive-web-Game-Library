@@ -1,0 +1,25 @@
+﻿1. Right click project 
+	1a. Add > Scoffolding Item
+	1b. Idenity > OK
+	1c. Point to Layout (_Layout.cshtml)
+	1d. Override interest pages. (add all for now)
+	1e. Create new Context (IdentityContext)
+	1f. OK!
+2. Startup.cs
+	2a. app.UseAuthentication() before app.UseAuthorization();
+	2b. add endpoints.MapRazorPages(); bottom of routes.
+3. PackageManagementConsole
+	3a. Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+	3b. Add-Migration CreateIdentitySchema -Context IdentityContext
+
+	-------> 3c is where i left off.
+	3c. Check connection string in appsettings.config (database name, server)
+	3c. Update-Database -Context IdentityContext
+4. add <partial name="_LoginPartial" /> to _Layout after UL
+5. (optional) Modify password requirements
+	5a. IdenityHosting.Startup.cs
+	5b. services.Configure<IdentityOptions>(options => { settings below});
+	5c. options.Password.*
+	5d. options.User.*
+6. Restricting controller using [Authorize]
+	6b. using Microsoft.AspNetCore.Authorization;

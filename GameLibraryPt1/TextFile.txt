@@ -1,0 +1,48 @@
+﻿Steps as we talked about in class:
+
+1. Create Class Library (.NET Standard) C#
+	1a. Delete class1.cs
+2. Created Models Folder
+	2a. Copy Models from web project to this library model folder
+	2b. Fix Namespaces/Usings
+3. Move Validators
+	3a. Fixed Namespaces/Usings
+4. Install Package System.ComponentModel.Annotations
+	4a. Ctrl + . on [Required]
+	4b. Install Package > Latest Version
+5. Change ID to public int? Id {get;set;}
+6. Right click Library project > Properties > Change Target Framework 2.1
+7. Add NuGet Packages (Right click Library project Dependencies > Manage NuGetPackages)
+	7a. Go to Browse(top left) and search for:
+	7b. Microsoft.EntityFrameworkCore.SqlServer
+8. Create Data Folder
+	8a. Create a context file - ContextName.cs (MovieContext.cs)
+	8b. Create Constructor taking in DbContextOptions options and passing them to :base(options)
+	8c. Create a DbSet for each Table you want in database (in our case 1)
+		8c1. public DbSet<Movie> Movies { get; set; }
+9. In Web project:
+	9a. Add reference to Library project
+10. In Startup.cs of web project:
+	10a. using MovieDataAccessLibrary.Data; using Microsoft.EntityFrameworkCore;
+	10b.Add Connection string to appsettings.json:	
+		10c1. Open SQL Server Object Explorer > Properties on Localdb for your connection string
+		10c2. Only use Data Source, Initial Catalog, and Integrated Security:
+		10c3. "ConnectionStrings": {"MovieDB": "Data Source=***GET YOUR CONNECTION STRING****;Initial Catalog=MovieDB;Integrated Security=True;"}
+	10c. Add DbContext Service 
+			services.AddDbContext<MovieContext>(options =>
+			{
+				options.UseSqlServer(Configuration.GetConnectionString("MovieDB"));
+			}); 
+11. Create Migrations
+	11a. Add NuGet package for Microsoft.EntityFrameworkCore.Tools
+		11a1. Also add reference to web project
+	11b. Change default project in Package Manager Console to Library
+	11b. Run Add-Migration InitDB
+	11c. Anytime you change anything, create a Migration when done.
+12. Run Update-Database to create the database using the Migration(s)
+13. Remove Movie / Validation models from Web Project
+14. Update all references to point to the MovieDataAccessLibrary instead
+15. Add constructor to MovieListDal.cs
+	15a. Pass in a  (MovieContext db) to constructor and set to private variable
+	15b. MovieContext will be depenency injected
+16. Start querying the database using _db.Movies.LINQ

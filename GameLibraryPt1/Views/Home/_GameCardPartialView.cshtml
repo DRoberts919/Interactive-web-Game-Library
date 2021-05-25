@@ -1,0 +1,60 @@
+﻿@model Game
+@{
+}
+
+@if(Model == null)
+{
+    <h1>There are no games today</h1>
+}
+else
+{
+<div class="card grow" style="width: 18rem;">
+    <img src="~/images/@Model.Image" class="card-img-top gameImage" alt="...">
+    <div class="card-body">
+        <h5 class="titleColor">Title</h5>
+        <h4 class="card-title">@Model.Title</h4>
+        <h5 class="titleColor">Platform</h5>
+        <h6 class="card-title">@Model.Platform</h6>
+        <h5 class="titleColor">Rating</h5>
+        <h6 class="card-title">@Model.Rating</h6>
+        <h5 class="titleColor">Genre</h5>
+        <h6 class="card-title">@Model.Genre</h6>
+        <h5 class="titleColor">Release Date</h5>
+        <h6 class="card-title">@Model.Year</h6>
+
+
+        @if (Model.LoanDate == null)
+        {
+            <h6 class="titleColor">Not loaned</h6>
+        }
+        else
+        {
+            <h5 class="titleColor">Loanded Date</h5>
+            <h6 class="card-title">@Model.LoanDate</h6>
+            <h5 class="titleColor">Loaned To</h5>
+            <h6 class="card-title">@Model.LoanedTo</h6>
+        }
+
+
+
+        <div class="row">
+            <a asp-controller="Home" asp-action="LoadGame" asp-route-id="@Model.Id">
+                Rent Game
+            </a>
+        </div>
+        <div class="row">
+            <a asp-controller="Home" asp-action="ReturnGame" asp-route-id="@Model.Id">Return Game</a>
+        </div>
+        <div class="row">
+            <a asp-controller="Home" asp-action="DeleteGame" asp-route-id="@Model.Id">Delete Game</a>
+        </div>
+
+
+    </div>
+
+    
+</div>
+}
+
+
+

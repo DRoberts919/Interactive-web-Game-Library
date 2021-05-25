@@ -1,0 +1,170 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    font-size:larger;
+    word-break: break-all;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    position: relative;
+    display: inline-block;
+    color: #ffff;
+    font-size: 2em;
+    font-weight:700;
+    overflow: hidden;
+}
+
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: attr(data-content);
+        color: #00C9A9;
+        overflow: hidden;
+        transition: width 289ms ease;
+        
+    }
+
+    .navbar-light .navbar-nav .nav-link::before {
+        width: 0;
+        white-space: nowrap;
+    }
+
+   .navbar-light .navbar-nav .nav-link:hover::before {
+       width: 100%;
+   }
+
+        /* Provide sufficient contrast against white background */
+        /*a {
+            color: #0366d6;
+        }*/
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: #343335;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #343335;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #626163;
+}
+
+.headerBackground {
+    background-color: #626163;
+}
+
+
+
+/*this is where my anmations for the game cards are*/
+.card-body {
+    background-color: #343335;
+    color: #ffff;
+}
+
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+    .grow:hover {
+        transform: scale(1.0);
+        
+        border: solid 5px #00C9A9;
+    }
+
+.card{
+    height:800px;
+   max-height:900px;
+    margin-bottom:20px;
+}
+
+
+
+.titleColor {
+    color: #00C9A9;
+}
+
+
+/*this is the css for all the game cards*/
+
+.gameImage{
+    max-height:300px;
+    max-width:350px;
+}
+
+.logoImg{
+   
+    max-height:100px;
+
+}
+
+.testLogo{
+    padding-left:5px;
+    max-height:80px;
+    
+    
+}
+
+.mainRow{
+    
+    /*margin-left:80px;*/
+}
+
+
+.dropBtn{
+    margin-left:200px;
+    padding-top:150px;
+}

@@ -1,0 +1,17 @@
+﻿@model Game
+@{
+}
+
+
+<h2>Rent a game</h2>
+<h1>@Model.Title</h1>
+
+<div>
+    <form asp-controller="Home" asp-action="RentGame" method="post">
+        <div class="input-group mb-3">
+            <input type="hidden" value="@Model.Id" name="id"/>
+            <input name="renter" type="text" class="form-control" value="" placeholder="name" aria-describedby="basic-addon1">
+        </div>
+        <button type="submit">Rent Game</button>
+    </form>
+</div>
